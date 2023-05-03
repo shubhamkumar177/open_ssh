@@ -1,0 +1,9 @@
+//for Client
+> Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
+//for Server
+> Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+After adding both capabilities enter the following commands in the same Powershell Terminal:
+
+> Start-Service sshd
+> Set-Service -Name sshd -StartupType ‘Automatic’
+> Get-Service ssh-agent | Set-Service -StartupType Manual
