@@ -1,0 +1,38 @@
+Download the OpenSSH installation package for Windows Server 2016 from the following GitHub repository: https://github.com/PowerShell/Win32-OpenSSH/releases
+
+Choose the appropriate version based on your system architecture (32-bit or 64-bit) and download the ZIP package.
+
+Extract the contents of the ZIP package to a directory of your choice.
+
+Open a PowerShell prompt with administrator privileges.
+
+Navigate to the directory where you extracted the OpenSSH package.
+
+Run the following commands to install OpenSSH:
+
+powershell
+Copy code
+cd .\OpenSSH-Win64\
+.\install-sshd.ps1
+After the installation is complete, start the OpenSSH SSHD service:
+
+powershell
+Copy code
+Start-Service sshd
+To automatically start the OpenSSH SSHD service at system boot, run the following command:
+
+powershell
+Copy code
+Set-Service -Name sshd -StartupType 'Automatic'
+To allow incoming SSH connections through the Windows Firewall, run the following command:
+
+powershell
+Copy code
+New-NetFirewallRule -Name 'OpenSSH' -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22
+Verify the SSH server is running and the firewall rule is enabled by running the following commands:
+
+powershell
+Copy code
+Get-Service sshd
+Get-NetFirewallRule -Name 'OpenSSH'
+With these steps, you should be able to install and configure OpenSSH on Windows Server 2016. Again, I apologize for any confusion caused, and thank you for bringing it to my attention.
