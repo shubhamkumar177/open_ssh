@@ -1,3 +1,7 @@
+for server
+Get-WindowsCapability -Online | Where-Object { $_.Name -like 'OpenSSH.Server*' }
+for client
+Get-WindowsCapability -Online | Where-Object { $_.Name -like 'OpenSSH.Client*' }
 //for Client
 > Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
 //for Server
