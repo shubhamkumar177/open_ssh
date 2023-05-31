@@ -1,3 +1,4 @@
+ Get-WindowsCapability -Online | Where-Object { $_.Name -like 'OpenSSH*' }
 Download the OpenSSH installation package for Windows Server 2016 from the following GitHub repository: https://github.com/PowerShell/Win32-OpenSSH/releases
 
 Choose the appropriate version based on your system architecture (32-bit or 64-bit) and download the ZIP package.
